@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SimpleAbilities:jar">
+    <output-path>$PROJECT_DIR$/../../../Test Server 2/plugins</output-path>
+    <root id="archive" name="SimpleAbilities.jar">
+      <element id="module-output" name="SimpleAbilities" />
+    </root>
+  </artifact>
+</component>

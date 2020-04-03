@@ -1,0 +1,11 @@
+name: SimpleAbilities
+main: me.sores.simpleabilities.SimpleAbilities
+version: 1.0
+author: sores
+commands:
+  ability:
+    description: Base command for abilities.
+    aliases: []
+  abilityreload:
+    description: Reload files for SimpleAbilities.
+    aliases: [abilityrl]
