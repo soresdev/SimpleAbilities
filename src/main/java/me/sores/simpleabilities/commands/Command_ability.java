@@ -4,6 +4,7 @@ import me.sores.simpleabilities.SimpleAbilities;
 import me.sores.simpleabilities.ability.Ability;
 import me.sores.simpleabilities.ability.AbilityManager;
 import me.sores.simpleabilities.config.AbilitiesLang;
+import me.sores.simpleabilities.menu.AbilityMenu;
 import me.sores.simpleabilities.util.MessageUtil;
 import me.sores.spark.util.InventoryUtil;
 import me.sores.spark.util.PlayerUtil;
@@ -33,6 +34,7 @@ public class Command_ability implements ICommand {
             StringUtil.color("&e/ability edit <ability> &f- Edit an ability's individual attributes."),
             StringUtil.color("&e/ability info <ability> &f - View info of an ability."),
             StringUtil.color("&e/ability list &f- List all abilities."),
+            StringUtil.color("&e/ability menu &f- View the ability menu."),
             StringUtil.color("&8&m------------------------------------------------"),
     };
 
@@ -120,6 +122,16 @@ public class Command_ability implements ICommand {
 
             case "list": {
                 MessageUtil.sendAbilityList(sender);
+                break;
+            }
+
+            case "menu":{
+                if(!(sender instanceof Player)){
+                    sender.sendMessage(StringUtil.color("&cOnly players can open the ability menu."));
+                    return;
+                }
+
+                new AbilityMenu((Player) sender).open((Player) sender);
                 break;
             }
 

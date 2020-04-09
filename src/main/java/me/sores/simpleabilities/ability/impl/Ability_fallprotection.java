@@ -51,12 +51,22 @@ public class Ability_fallprotection extends Ability {
 
     @Override
     public ItemStack getIcon() {
-        return null;
+        List<String> lore = new ArrayList<>();
+        lore.add("&8&m------------------------------------------------");
+        lore.add("&6- Default Values -");
+        lore.add("&e- Enabled: &r" + isEnabled());
+        lore.add("&e- Cooldown: &r" + getCooldown());
+        lore.add(" ");
+        lore.add("&6- Ability Attributes -");
+        lore.add("&8&m------------------------------------------------");
+        StringUtil.color(lore);
+
+        return new ItemBuilder(Material.CLAY_BRICK).setName(getDisplay()).setLore(StringUtil.color(lore)).build();
     }
 
     @Override
     public ItemStack getItem() {
-        return new ItemBuilder(Material.BRICK).setName("&bFall Protection Ability").build();
+        return new ItemBuilder(Material.CLAY_BRICK).setName("&bFall Protection Ability").build();
     }
 
     @Override

@@ -8,7 +8,8 @@ import me.sores.spark.util.configuration.ConfigFile;
  */
 public class AbilitiesConfig {
 
-    //tODO start adding ability attributes here
+    public static String MENU_TITLE;
+
     public static int COCAINE_COOLDOWN;
     public static boolean COCAINE_ENABLED;
     public static int COCAINE_SPEED_LEVEL;
@@ -36,6 +37,7 @@ public class AbilitiesConfig {
         ConfigFile config = new ConfigFile("config.yml", SimpleAbilities.getInstance());
         String path = "abilities.";
 
+        MENU_TITLE = config.getString("menu.title");
         COCAINE_COOLDOWN = config.getInt(path + "cocaine.cooldown");
         COCAINE_ENABLED = config.getBoolean(path + "cocaine.enabled");
         COCAINE_SPEED_LEVEL = config.getInt(path + "cocaine.speed_level");

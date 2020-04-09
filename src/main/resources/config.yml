@@ -1,6 +1,8 @@
 ## Default configuration file for SimpleAbilities developed by sores ##
 ## Any time variables are based in seconds ##
 
+menu:
+  title: '&aAbilities Menu: '
 abilities:
   switcher:
     enabled: true

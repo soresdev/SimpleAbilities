@@ -15,6 +15,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by sores on 4/1/2020.
  */
@@ -36,7 +39,17 @@ public class Ability_smeltingshovel extends Ability {
 
     @Override
     public ItemStack getIcon() {
-        return null;
+        List<String> lore = new ArrayList<>();
+        lore.add("&8&m------------------------------------------------");
+        lore.add("&6- Default Values -");
+        lore.add("&e- Enabled: &r" + isEnabled());
+        lore.add("&e- Cooldown: &r" + getCooldown());
+        lore.add(" ");
+        lore.add("&6- Ability Attributes -");
+        lore.add("&8&m------------------------------------------------");
+        StringUtil.color(lore);
+
+        return new ItemBuilder(Material.DIAMOND_SPADE).setName(getDisplay()).setLore(StringUtil.color(lore)).build();
     }
 
     @Override

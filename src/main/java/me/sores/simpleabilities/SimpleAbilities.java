@@ -6,9 +6,11 @@ import me.sores.simpleabilities.commands.Command_ability;
 import me.sores.simpleabilities.commands.Command_abilityreload;
 import me.sores.simpleabilities.config.AbilitiesConfig;
 import me.sores.simpleabilities.config.AbilitiesLang;
+import me.sores.simpleabilities.menu.listener.Listener_abilitymenu;
 import me.sores.spark.util.StringUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -52,7 +54,9 @@ public class SimpleAbilities extends JavaPlugin {
     }
 
     private void loadListeners(){
+        PluginManager pluginManager = Bukkit.getPluginManager();
 
+        pluginManager.registerEvents(new Listener_abilitymenu(), this);
     }
 
     private void initClasses(){

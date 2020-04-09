@@ -23,7 +23,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -58,7 +60,17 @@ public class Ability_antibuild extends Ability {
 
     @Override
     public ItemStack getIcon() {
-        return null;
+        List<String> lore = new ArrayList<>();
+        lore.add("&8&m------------------------------------------------");
+        lore.add("&6- Default Values -");
+        lore.add("&e- Enabled: &r" + isEnabled());
+        lore.add("&e- Cooldown: &r" + getCooldown());
+        lore.add(" ");
+        lore.add("&6- Ability Attributes -");
+        lore.add("&e- Time: &r" + getTime());
+        lore.add("&8&m------------------------------------------------");
+
+        return new ItemBuilder(Material.EGG).setName(getDisplay()).setLore(StringUtil.color(lore)).build();
     }
 
     @Override

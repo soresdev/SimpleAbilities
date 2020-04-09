@@ -20,7 +20,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -59,7 +61,19 @@ public class Ability_recall extends Ability {
 
     @Override
     public ItemStack getIcon() {
-        return null;
+        List<String> lore = new ArrayList<>();
+        lore.add("&8&m------------------------------------------------");
+        lore.add("&6- Default Values -");
+        lore.add("&e- Enabled: &r" + isEnabled());
+        lore.add("&e- Cooldown: &r" + getCooldown());
+        lore.add(" ");
+        lore.add("&6- Ability Attributes -");
+        lore.add("&e- Range: &r" + getRange());
+        lore.add("&e- Potion Effect: &r" + isPotionEffect());
+        lore.add("&8&m------------------------------------------------");
+        StringUtil.color(lore);
+
+        return new ItemBuilder(Material.REDSTONE).setName(getDisplay()).setLore(StringUtil.color(lore)).build();
     }
 
     @Override

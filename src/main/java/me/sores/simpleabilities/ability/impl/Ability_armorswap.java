@@ -18,7 +18,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by sores on 4/2/2020.
@@ -49,13 +51,23 @@ public class Ability_armorswap extends Ability {
 
     @Override
     public ItemStack getIcon() {
-        return null;
+        List<String> lore = new ArrayList<>();
+        lore.add("&8&m------------------------------------------------");
+        lore.add("&6- Default Values -");
+        lore.add("&e- Enabled: &r" + isEnabled());
+        lore.add("&e- Cooldown: &r" + getCooldown());
+        lore.add(" ");
+        lore.add("&6- Ability Attributes -");
+        lore.add("&e- Time: &r" + getTime());
+        lore.add("&e- Potion Effect: &r" + isPotionEffect());
+        lore.add("&8&m------------------------------------------------");
+        StringUtil.color(lore);
+
+        return new ItemBuilder(Material.GOLD_AXE).setName(getDisplay()).setLore(StringUtil.color(lore)).build();
     }
 
     @Override
     public ItemStack getItem() {
-//        List<String> lore = new ArrayList<>();
-//        lore.add("&b&l&r");
         return new ItemBuilder(Material.GOLD_AXE).setLore(Arrays.asList(StringUtil.color("&b&l&r"))).setName("&bArmor Swap Axe").build();
     }
 
