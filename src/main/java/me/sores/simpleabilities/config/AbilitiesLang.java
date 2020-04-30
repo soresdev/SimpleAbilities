@@ -14,6 +14,8 @@ public class AbilitiesLang {
     public static String NO_PLAYER_FOUND = "";
     public static String ABILITY_NOT_FOUND = "";
     public static String ABILITY_DISABLED = "";
+    public static String COOLDOWN_REMOVED = "";
+    public static String NOT_ON_COOLDOWN = "";
 
     public AbilitiesLang() {
         ConfigFile lang = new ConfigFile("lang.yml", SimpleAbilities.getInstance());
@@ -24,5 +26,7 @@ public class AbilitiesLang {
         NO_PLAYER_FOUND = lang.getString("NO_PLAYER_FOUND");
         ABILITY_NOT_FOUND = lang.getString("ABILITY_NOT_FOUND");
         ABILITY_DISABLED = lang.getString("ABILITY_DISABLED");
+        COOLDOWN_REMOVED = lang.getString("COOLDOWN_REMOVED");
+        NOT_ON_COOLDOWN = lang.getString("NOT_ON_COOLDOWN");
     }
 }

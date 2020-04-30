@@ -31,6 +31,7 @@ public class Command_ability implements ICommand {
             StringUtil.color("&8&m------------------------------------------------"),
             StringUtil.color("&6&lAbility Usage: "),
             StringUtil.color("&e/ability give <player> <ability> &f- Give a player an ability."),
+            StringUtil.color("&e/ability clear <player> &f- Clear a player's ability cooldown."),
             StringUtil.color("&e/ability edit <ability> &f- Edit an ability's individual attributes."),
             StringUtil.color("&e/ability info <ability> &f - View info of an ability."),
             StringUtil.color("&e/ability list &f- List all abilities."),
@@ -83,6 +84,30 @@ public class Command_ability implements ICommand {
                     sender.sendMessage(StringUtil.color("&cPlease input a proper number."));
                 }
 
+                break;
+            }
+
+            case "reset":
+            case "clear":{
+                if(args.length < 2){
+                    sender.sendMessage(StringUtil.color("&cUsage: /ability clear <player>"));
+                    return;
+                }
+
+                Player target = Bukkit.getPlayer(args[1]);
+
+                if(!PlayerUtil.doesExist(target)){
+                    sender.sendMessage(StringUtil.color(AbilitiesLang.NO_PLAYER_FOUND).replace("%name%", args[1]));
+                    return;
+                }
+
+                if(!AbilityManager.getInstance().isOnCooldown(target)){
+                    sender.sendMessage(StringUtil.color(AbilitiesLang.NOT_ON_COOLDOWN).replace("%name%", target.getName()));
+                    return;
+                }
+
+                AbilityManager.getInstance().remove(target);
+                sender.sendMessage(StringUtil.color(AbilitiesLang.COOLDOWN_REMOVED).replace("%name%", target.getName()));
                 break;
             }
 

@@ -4,3 +4,5 @@ COOLDOWN_MESSAGE: '&cYour %ability% Ability is still on cooldown for %time% seco
 NO_PLAYER_FOUND: '&cNo player online with the name: &e%name%'
 ABILITY_NOT_FOUND: '&cInvalid ability: &e%ability%&c, please try again.'
 ABILITY_DISABLED: '&cThat ability is currently disabled.'
+NOT_ON_COOLDOWN: '&c%name% does not have an active Ability Cooldown.'
+COOLDOWN_REMOVED: "&aYou have cleared %name%'s active Ability Cooldown."
