@@ -54,18 +54,37 @@ public class Command_ability implements ICommand {
         switch (args[0].toLowerCase()){
             case "give":{
                 if(args.length < 4){
-                    sender.sendMessage(StringUtil.color("&cUsage: /ability give <player> <ability> <amount>"));
+                    sender.sendMessage(StringUtil.color("&cUsage: /ability give <player:all> <ability> <amount>"));
                     return;
                 }
 
-                Player target = Bukkit.getPlayer(args[1]);
+
+                String name = args[1];
+                Ability ability = AbilityManager.getInstance().valueOf(args[2]);
+                Player target = Bukkit.getPlayer(name);
+
+                if(name.equalsIgnoreCase("all")){
+                    Bukkit.getOnlinePlayers().forEach(online -> {
+                        try{
+                            int amount = Integer.parseInt(args[3]);
+
+                            for(int i = 0; i < amount; i++){
+                                InventoryUtil.giveItemSafely(online, ability.getItem());
+                            }
+
+                            sender.sendMessage(StringUtil.color(AbilitiesLang.ABILITY_GIVEN_ALL).replace("%amount%", String.valueOf(amount))
+                                    .replace("%ability%", ability.getDisplay()));
+                        }catch (NumberFormatException ex){
+                            sender.sendMessage(StringUtil.color("cPlease input a proper number."));
+                        }
+                    });
+                    return;
+                }
 
                 if(!PlayerUtil.doesExist(target)){
                     sender.sendMessage(StringUtil.color(AbilitiesLang.NO_PLAYER_FOUND).replace("%name%", args[1]));
                     return;
                 }
-
-                Ability ability = AbilityManager.getInstance().valueOf(args[2]);
 
                 if(!AbilityManager.getInstance().getAbilities().contains(ability)){
                     sender.sendMessage(StringUtil.color(AbilitiesLang.ABILITY_NOT_FOUND).replace("%ability%", args[2]));
@@ -79,7 +98,8 @@ public class Command_ability implements ICommand {
                         InventoryUtil.giveItemSafely(target, ability.getItem());
                     }
 
-                    sender.sendMessage(StringUtil.color("&aYou have given " + target.getName() + " " + amount + " of " + ability.getDisplay()));
+                    sender.sendMessage(StringUtil.color(AbilitiesLang.ABILITY_GIVEN).replace("%name%", target.getName()).replace("%amount%", String.valueOf(amount))
+                    .replace("%ability%", ability.getDisplay()));
                 }catch (NumberFormatException ex){
                     sender.sendMessage(StringUtil.color("&cPlease input a proper number."));
                 }
