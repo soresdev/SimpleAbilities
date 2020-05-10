@@ -207,6 +207,7 @@ public class Ability_recall extends Ability {
             if(item != null && item.isSimilar(getItem())){
                 if(!isEnabled()){
                     player.sendMessage(StringUtil.color(AbilitiesLang.ABILITY_DISABLED));
+                    event.setCancelled(true);
                     return;
                 }
 

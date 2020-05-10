@@ -31,11 +31,11 @@ public class Command_ability implements ICommand {
             StringUtil.color("&8&m------------------------------------------------"),
             StringUtil.color("&6&lAbility Usage: "),
             StringUtil.color("&e/ability give <player> <ability> &f- Give a player an ability."),
-            StringUtil.color("&e/ability clear <player> &f- Clear a player's ability cooldown."),
             StringUtil.color("&e/ability edit <ability> &f- Edit an ability's individual attributes."),
             StringUtil.color("&e/ability info <ability> &f - View info of an ability."),
-            StringUtil.color("&e/ability list &f- List all abilities."),
+            StringUtil.color("&e/ability clear <player> &f- Clear a player's ability cooldown."),
             StringUtil.color("&e/ability menu &f- View the ability menu."),
+            StringUtil.color("&e/ability list &f- List all abilities."),
             StringUtil.color("&8&m------------------------------------------------"),
     };
 
