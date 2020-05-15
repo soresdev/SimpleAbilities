@@ -42,6 +42,7 @@ public class AbilityMenu extends BasicMenu {
         lore.add("&7- Click on an ability to enable/disable it.");
         lore.add(" ");
         lore.add("&7- Total Abilities: &e" + AbilityManager.getInstance().getAbilities().size());
+        lore.add("&7- Active Cooldowns: &e" + AbilityManager.getInstance().getAbilityHandler().size());
         lore.add("&8&m------------------------------------------------");
         ItemStack info = new ItemBuilder(Material.PAPER).setName(StringUtil.color("&6Menu Info")).setLore(StringUtil.color(lore)).build();
 

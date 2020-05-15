@@ -227,7 +227,8 @@ public class Ability_recall extends Ability {
 
                 Location location = event.getClickedBlock().getLocation().add(new Vector(0, 1 ,0));
                 locationMap.put(player.getUniqueId(), location);
-                player.sendMessage(StringUtil.color("&aYou have set your recall point."));
+                player.sendMessage(StringUtil.color("&aYou have set your recall point at " + location.getBlockX()
+                        + ", " + location.getBlockY() + ", " + location.getBlockZ() + "."));
                 event.setCancelled(true);
                 player.updateInventory();
 
@@ -271,7 +272,7 @@ public class Ability_recall extends Ability {
                 player.getWorld().playSound(player.getLocation(), Sound.ENDERMAN_TELEPORT, 2, 2);
 
                 player.teleport(check);
-                player.sendMessage(StringUtil.color("&aYou have recalled to your recall point."));
+                player.sendMessage(StringUtil.color("&aYou have teleported to your recall point."));
                 perform(player, this);
 
                 if(item.getAmount() > 1){

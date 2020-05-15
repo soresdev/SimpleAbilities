@@ -64,6 +64,11 @@ public class Command_ability implements ICommand {
                 Player target = Bukkit.getPlayer(name);
 
                 if(name.equalsIgnoreCase("all")){
+                    if(Bukkit.getOnlinePlayers().size() == 0){
+                        sender.sendMessage(StringUtil.color("&cThere are no players online."));
+                        return;
+                    }
+
                     Bukkit.getOnlinePlayers().forEach(online -> {
                         try{
                             int amount = Integer.parseInt(args[3]);
@@ -110,11 +115,28 @@ public class Command_ability implements ICommand {
             case "reset":
             case "clear":{
                 if(args.length < 2){
-                    sender.sendMessage(StringUtil.color("&cUsage: /ability clear <player>"));
+                    sender.sendMessage(StringUtil.color("&cUsage: /ability clear <player:all>"));
                     return;
                 }
 
-                Player target = Bukkit.getPlayer(args[1]);
+                String name = args[1];
+                Player target = Bukkit.getPlayer(name);
+
+                if(name.equalsIgnoreCase("all")){
+                    if(Bukkit.getOnlinePlayers().size() == 0){
+                        sender.sendMessage(StringUtil.color("&cThere are no players online."));
+                        return;
+                    }
+
+                    Bukkit.getOnlinePlayers().forEach(online -> {
+                        if(AbilityManager.getInstance().isOnCooldown(online)){
+                            AbilityManager.getInstance().remove(online);
+                        }
+                    });
+
+                    sender.sendMessage(StringUtil.color("&aYou have cleared ALL online player's ability cooldowns."));
+                    return;
+                }
 
                 if(!PlayerUtil.doesExist(target)){
                     sender.sendMessage(StringUtil.color(AbilitiesLang.NO_PLAYER_FOUND).replace("%name%", args[1]));
